@@ -1,70 +1,45 @@
 package com.lighthouse.resultautomation.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Data
 @Entity
 @Table(name= "user", schema = "result_automation")
 public class User {
 
 	@Id
-	private int id;
-	private String username;
+	@GeneratedValue
+	private Integer id;
+
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "user_name")
+	private String userName;
+
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "password")
 	private String password;
-	
-	
+
 	public User() {
-		super();
 	}
 
-
-	public User(int id, String username, String password) {
-		super();
-		this.id = id;
-		this.username = username;
+	public User(String name,
+				String userName,
+				String email,
+				String password) {
+		this.name = name;
+		this.userName = userName;
+		this.email = email;
 		this.password = password;
 	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public String getUsername() {
-		return username;
-	}
-
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		return "User [id=" + id + ", userName=" + userName + ", password=" + password + "]";
 	}
-	
-	
-	
-	
-	
-	
 }
