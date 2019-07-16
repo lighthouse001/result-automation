@@ -3,6 +3,7 @@ package com.lighthouse.resultautomation.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -13,15 +14,19 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 
+	@NotNull
 	@Column(name = "name")
 	private String name;
 
+	@NotNull
 	@Column(name = "user_name")
 	private String userName;
 
+	@NotNull
 	@Column(name = "email")
 	private String email;
 
+	@NotNull
 	@Column(name = "password")
 	private String password;
 
