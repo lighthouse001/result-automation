@@ -1,6 +1,6 @@
 package com.lighthouse.resultautomation.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -8,6 +8,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Entity
 @Table(name= "user", schema = "result_automation")
+@Builder
 public class User {
 
 	@Id
@@ -29,22 +30,4 @@ public class User {
 	@NotNull
 	@Column(name = "password")
 	private String password;
-
-	public User() {
-	}
-
-	public User(String name,
-				String userName,
-				String email,
-				String password) {
-		this.name = name;
-		this.userName = userName;
-		this.email = email;
-		this.password = password;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", password=" + password + "]";
-	}
 }
