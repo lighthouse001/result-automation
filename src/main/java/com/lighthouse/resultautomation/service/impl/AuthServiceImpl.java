@@ -29,8 +29,12 @@ public class AuthServiceImpl implements AuthService {
     public String signUp(SignUpRequest signUpRequest) {
         Optional<User> checkedUser = userRepository.findByEmail(signUpRequest.getEmail());
         if(!checkedUser.isPresent()){
-            User user = new User(signUpRequest.getName(), signUpRequest.getUserName(), signUpRequest.getEmail(),
-                    passwordEncoder.encode(signUpRequest.getPassword()));
+            User user = User.builder()
+                    .name(signUpRequest.getName())
+                    .userName(signUpRequest.getUserName())
+                    .email(signUpRequest.getEmail())
+                    .password(passwordEncoder.encode(signUpRequest.getPassword()))
+                    .build();
 
             userRepository.save(user);
             return SUCCESS;
