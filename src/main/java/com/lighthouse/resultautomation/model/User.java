@@ -2,6 +2,9 @@ package com.lighthouse.resultautomation.model;
 
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -12,7 +15,7 @@ import javax.validation.constraints.NotNull;
 public class User {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@NotNull
@@ -30,4 +33,13 @@ public class User {
 	@NotNull
 	@Column(name = "password")
 	private String password;
+	
+	
+	@ManyToMany
+	private List<Role> role = new ArrayList<>();
+	
+	@OneToMany(mappedBy="user")
+	private List<Team> team=new ArrayList<>();
+	
+	
 }
